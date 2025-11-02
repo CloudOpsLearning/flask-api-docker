@@ -1,0 +1,33 @@
+# Caches et fichiers compilés :
+
+__pycache__/
+
+*.pyc
+*.pyo
+*.pyd
+
+# Environnements virtuels :
+
+venv/
+env/
+.venv/
+
+# Fichiers de build et de distribution :
+
+build/
+dist/
+*.egg-info/
+
+# Fichiers de configuration et de développement :
+
+.env
+.env.*
+.dockerignore 
+# (pour éviter qu'il soit copié)
+Dockerfile 
+# (si le Dockerfile est dans le même répertoire)
+
+# Caches spécifiques aux outils :
+.pytest_cache/
+.mypy_cache/
+.tox/ 

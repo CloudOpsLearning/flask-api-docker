@@ -1,0 +1,29 @@
+FROM alpine:latest
+
+
+
+RUN apk update
+RUN apk add py-pip
+RUN apk add --no-cache python3-dev 
+
+# add --break-system-packages for compile without error for cash
+
+RUN pip install --upgrade --break-system-packages pip 
+
+WORKDIR /app
+COPY . /app
+RUN pip --no-cache-dir install --break-system-packages -r requirements.txt
+
+EXPOSE 5000
+
+# Lancer en mode production avec gunicorn ou uWSGI mais il faut les mettre dans 
+# requirement.txt pour installation
+
+# Étape 6 : lancer Gunicorn en mode production
+CMD ["gunicorn", "--bind", "0.0.0.0:5000", "app:app"]
+
+# #  ou avec Lancer uWSGI en mode production
+# CMD ["uwsgi", "--http", "0.0.0.0:5000", "--wsgi-file", "app.py", "--callable", "app"]
+
+
+# CMD ["python3", "app.py"]
